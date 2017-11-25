@@ -1,16 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class InitSystems : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+public class InitSystems : Feature {
+	public InitSystems(Contexts contexts) : base("Init Systems") {
+		Add(new InitGameSystem(contexts));
+		Add(new InitPlayerSystem(contexts));
+		Add(new InitInteractibleViewsSystem(contexts));
 	}
 }

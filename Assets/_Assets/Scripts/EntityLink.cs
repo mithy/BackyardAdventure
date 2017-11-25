@@ -9,6 +9,16 @@ public class EntityLink : MonoBehaviour {
 		}
 	}
 
+	public string UUID {
+		get {
+			if (_entity == null) {
+				return string.Empty;
+			}
+
+			return _entity.indexableEntity.uuid;
+		}
+	}
+
 	public void Link(GameEntity entity) {
 		_entity = entity;
 	}

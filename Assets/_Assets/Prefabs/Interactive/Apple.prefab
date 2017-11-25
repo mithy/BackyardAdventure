@@ -10,10 +10,10 @@ GameObject:
   - component: {fileID: 425266}
   - component: {fileID: 3355380}
   - component: {fileID: 2307276}
-  - component: {fileID: 54648066914621262}
-  - component: {fileID: 135826961850881930}
-  - component: {fileID: 114858132719936750}
-  - component: {fileID: 114052299380847196}
+  - component: {fileID: 54621554309681232}
+  - component: {fileID: 135084507356384490}
+  - component: {fileID: 114649928500812824}
+  - component: {fileID: 114142080938003570}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.953254, y: 2.72, z: -2.886969}
+  m_LocalPosition: {x: -10.3, y: 5.87, z: 23.37}
   m_LocalScale: {x: 0.46668103, y: 0.46668103, z: 0.46668103}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +48,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 215977489d11178d11005b9844295342, type: 2}
+  - {fileID: 2100000, guid: 05244cd1770371546991e982a45ce03e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,7 +86,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 176184}
   m_IsPrefabParent: 1
---- !u!54 &54648066914621262
+--- !u!54 &54621554309681232
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -101,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114052299380847196
+--- !u!114 &114142080938003570
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,10 +109,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 176184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca9123a104d3cb45908e476180f7f5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f34385b32d41c04380f5b48d2f64235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114858132719936750
+--- !u!114 &114649928500812824
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,15 +120,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 176184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 9efa6b2ee71a71c458692e80e228dc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials:
-  - {fileID: 2100000, guid: 946d1ad9b3de9de459884e935ee7db82, type: 2}
---- !u!135 &135826961850881930
+--- !u!135 &135084507356384490
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

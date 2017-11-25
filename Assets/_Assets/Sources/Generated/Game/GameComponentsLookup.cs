@@ -8,15 +8,42 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Pickable = 0;
+    public const int Dropped = 0;
+    public const int Globals = 1;
+    public const int IndexableEntity = 2;
+    public const int Interactible = 3;
+    public const int LoadLevelTrigger = 4;
+    public const int Pickable = 5;
+    public const int PickedUp = 6;
+    public const int PlayerClickInput = 7;
+    public const int Player = 8;
+    public const int View = 9;
 
-    public const int TotalComponents = 1;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
-        "Pickable"
+        "Dropped",
+        "Globals",
+        "IndexableEntity",
+        "Interactible",
+        "LoadLevelTrigger",
+        "Pickable",
+        "PickedUp",
+        "PlayerClickInput",
+        "Player",
+        "View"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Pickable)
+        typeof(DroppedComponent),
+        typeof(GlobalsComponent),
+        typeof(IndexableEntityComponent),
+        typeof(InteractibleComponent),
+        typeof(LoadLevelTriggerComponent),
+        typeof(PickableComponent),
+        typeof(PickedUpComponent),
+        typeof(PlayerClickInputComponent),
+        typeof(PlayerComponent),
+        typeof(ViewComponent)
     };
 }

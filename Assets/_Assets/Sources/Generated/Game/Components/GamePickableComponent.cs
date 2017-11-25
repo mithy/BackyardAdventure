@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Pickable pickableComponent = new Pickable();
+    static readonly PickableComponent pickableComponent = new PickableComponent();
 
     public bool isPickable {
         get { return HasComponent(GameComponentsLookup.Pickable); }
