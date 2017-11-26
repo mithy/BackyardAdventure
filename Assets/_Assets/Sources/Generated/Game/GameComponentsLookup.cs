@@ -8,20 +8,23 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Dropped = 0;
-    public const int Globals = 1;
-    public const int IndexableEntity = 2;
-    public const int Interactible = 3;
-    public const int LoadLevelTrigger = 4;
-    public const int Pickable = 5;
-    public const int PickedUp = 6;
-    public const int PlayerClickInput = 7;
-    public const int Player = 8;
-    public const int View = 9;
+    public const int ContainedObject = 0;
+    public const int Dropped = 1;
+    public const int Globals = 2;
+    public const int IndexableEntity = 3;
+    public const int Interactible = 4;
+    public const int LoadLevelTrigger = 5;
+    public const int Pickable = 6;
+    public const int PickedUp = 7;
+    public const int PlayerActionInput = 8;
+    public const int Player = 9;
+    public const int TextHelper = 10;
+    public const int View = 11;
 
-    public const int TotalComponents = 10;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
+        "ContainedObject",
         "Dropped",
         "Globals",
         "IndexableEntity",
@@ -29,12 +32,14 @@ public static class GameComponentsLookup {
         "LoadLevelTrigger",
         "Pickable",
         "PickedUp",
-        "PlayerClickInput",
+        "PlayerActionInput",
         "Player",
+        "TextHelper",
         "View"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ContainedObjectComponent),
         typeof(DroppedComponent),
         typeof(GlobalsComponent),
         typeof(IndexableEntityComponent),
@@ -42,8 +47,9 @@ public static class GameComponentsLookup {
         typeof(LoadLevelTriggerComponent),
         typeof(PickableComponent),
         typeof(PickedUpComponent),
-        typeof(PlayerClickInputComponent),
+        typeof(PlayerActionInputComponent),
         typeof(PlayerComponent),
+        typeof(TextHelperComponent),
         typeof(ViewComponent)
     };
 }

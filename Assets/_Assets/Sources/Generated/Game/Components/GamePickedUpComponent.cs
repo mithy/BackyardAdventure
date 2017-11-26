@@ -8,25 +8,29 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly PickedUpComponent pickedUpComponent = new PickedUpComponent();
+    public PickedUpComponent pickedUp { get { return (PickedUpComponent)GetComponent(GameComponentsLookup.PickedUp); } }
+    public bool hasPickedUp { get { return HasComponent(GameComponentsLookup.PickedUp); } }
 
-    public bool isPickedUp {
-        get { return HasComponent(GameComponentsLookup.PickedUp); }
-        set {
-            if (value != isPickedUp) {
-                var index = GameComponentsLookup.PickedUp;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : pickedUpComponent;
+    public void AddPickedUp(float newInitialTime, UnityEngine.Vector3 newInitialPosition, float newTotalTravelDistance) {
+        var index = GameComponentsLookup.PickedUp;
+        var component = CreateComponent<PickedUpComponent>(index);
+        component.InitialTime = newInitialTime;
+        component.InitialPosition = newInitialPosition;
+        component.TotalTravelDistance = newTotalTravelDistance;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplacePickedUp(float newInitialTime, UnityEngine.Vector3 newInitialPosition, float newTotalTravelDistance) {
+        var index = GameComponentsLookup.PickedUp;
+        var component = CreateComponent<PickedUpComponent>(index);
+        component.InitialTime = newInitialTime;
+        component.InitialPosition = newInitialPosition;
+        component.TotalTravelDistance = newTotalTravelDistance;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemovePickedUp() {
+        RemoveComponent(GameComponentsLookup.PickedUp);
     }
 }
 

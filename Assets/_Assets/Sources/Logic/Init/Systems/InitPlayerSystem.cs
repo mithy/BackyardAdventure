@@ -17,9 +17,11 @@ public class InitPlayerSystem : IInitializeSystem {
 
 		entity.AddIndexableEntity(uuid);
 		entity.isPlayer = true;
-//		entity.AddPlayerClickInput(string.Empty);
+		//TODO: entity.AddPlayerClickInput(null);
+		entity.AddView(playerView.gameObject);
 
 		// Link view with model.
 		playerView.EntityLink.Link(entity);
+		_gameContext.globals.value.player = entity;
 	}
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using cakeslice;
+using UnityEngine;
 
 public class PlayerView : MonoBehaviour {
 
@@ -26,6 +27,8 @@ public class PlayerView : MonoBehaviour {
 		}
 	}
 
+	private GameObject _lastFocusedGameObject;
+
 	private void Awake() {
 		_entityLink = GetComponent<EntityLink>();	}
 
@@ -33,11 +36,33 @@ public class PlayerView : MonoBehaviour {
 		Ray ray = Camera.main.ViewportPointToRay(new Vector3(SCREEN_MIDDLE_POSITION, SCREEN_MIDDLE_POSITION, 0));
 		RaycastHit rayHit = new RaycastHit();
 
+		if (_lastFocusedGameObject != null) {
+			Destroy(_lastFocusedGameObject.GetComponent<Outline>());
+		}
+
 		if (Physics.Raycast(ray, out rayHit, MAXIMUM_INTERACT_DISTANCE)) {
 			InteractibleView interact = rayHit.collider.gameObject.GetComponent<InteractibleView>();
 
+			if (interact == null) {
+				interact = rayHit.collider.gameObject.GetComponentInParent<InteractibleView>();
+			}
+
 			if (interact != null) {
-				_entityLink.Entity.ReplacePlayerClickInput(interact.EntityLink.Entity);
+				_entityLink.Entity.ReplacePlayerActionInput(interact.EntityLink.Entity, interact);
+
+				interact.gameObject.AddComponent<Outline>();
+				_lastFocusedGameObject = interact.gameObject;
+			}
+		}
+	}
+
+	private void OnTriggerEnter(Collider other) {
+		InteractibleView interactible = other.gameObject.GetComponent<InteractibleView>();
+
+		if (interactible != null) {
+			if (interactible.InteractionType == InteractionTypesEnum.Collectable) {
+				_entityLink.Entity.ReplacePlayerActionInput(interactible.EntityLink.Entity, interactible);
+				Debug.Log("STAR COLLECTED");
 			}
 		}
 	}

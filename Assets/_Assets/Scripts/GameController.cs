@@ -6,11 +6,16 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	private Globals _globals;
 
+	[SerializeField]
+	private UIContainerView _uiContainer;
+
 	private Systems _systems;
     private Contexts _contexts;
 
     private void Start() {
 		Random.InitState(321);
+
+		_uiContainer.InitializeGlobals(_globals);
 
 		_contexts = Contexts.sharedInstance;
 		_contexts.game.SetGlobals(_globals);

@@ -3,5 +3,7 @@
 		Add(new LevelLoaderSystem(contexts));
 		Add(new PickedObjectHandlerSystem(contexts));
 		Add(new DroppedObjectHandlerSystem(contexts));
+		Add(new ContainedObjectHandlerSystem(contexts));
+		//Add(new StarCollectHandlerSystem(contexts));
 	}
 }
