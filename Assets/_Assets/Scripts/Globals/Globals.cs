@@ -1,0 +1,40 @@
+﻿using Entitas.CodeGeneration.Attributes;
+using UnityEngine;
+
+[Game, Unique, CreateAssetMenu]
+public class Globals : ScriptableObject {
+
+	public GameEntity player;
+
+	public TextHelper textHelper;
+	public MissionsDB missions;
+
+	public NotebookView notebookView;
+	public NotebookMessagesView notebookMessagesView;
+	public SceneIntroView sceneIntroView;
+	public ThrowPowerView throwPowerView;
+	public ActionHelperView actionHelperView;
+	public EndGameView endGameView;
+
+	public string GetSceneForLevel(LevelsEnum level) {
+		switch (level) {
+			case LevelsEnum.DayOne:
+				return "scene_day_1";
+
+			case LevelsEnum.DayTwo:
+
+				return "scene_day_2";
+
+			case LevelsEnum.DayThree:
+				return "scene_day_3";
+
+            case LevelsEnum.DayFour:
+                return "scene_day_4";
+
+            case LevelsEnum.DayFive:
+                return "scene_day_5";
+		}
+
+		return string.Empty;
+	}
+}

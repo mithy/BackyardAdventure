@@ -12,6 +12,9 @@ public class NotebookView : MonoBehaviour {
 	private Text _text;
 
 	[SerializeField]
+	private Text _helperText;
+
+	[SerializeField]
 	private GameObject _background;
 
 	private bool _isShown;
@@ -31,7 +34,7 @@ public class NotebookView : MonoBehaviour {
 
 		_background.SetActive(true);
 	}
-	
+
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.Tab)) {			_isShown = !_isShown;
 			_startTime = Time.time;
@@ -42,5 +45,13 @@ public class NotebookView : MonoBehaviour {
 		float distCovered = (Time.time - _startTime) * ANIMATION_SPEED;
 		float fracJourney = distCovered / _travelLength;
 		transform.position = Vector3.Lerp(_initialPosition, _isShown ? _finalPositionShown : _finalPositionHidden, fracJourney);
+	}
+
+	public void SetText(string text) {
+		_text.text = text;
+	}
+
+	public void SetHelperText(string text) {
+		_helperText.text = text;
 	}
 }

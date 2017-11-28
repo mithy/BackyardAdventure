@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4325030886140514}
   - component: {fileID: 33273771322985946}
   - component: {fileID: 23094433086743212}
+  - component: {fileID: 64647835076096470}
   m_Layer: 0
   m_Name: Hovel_Green
   m_TagString: Untagged
@@ -34,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655188977868730}
-  m_LocalRotation: {x: -4.32978e-17, y: 0.7071067, z: 0.7071068, w: -4.3297806e-17}
-  m_LocalPosition: {x: 157.96188, y: 528.5, z: -64.73741}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.23307624, y: 0.66758925, z: 0.6675894, w: 0.23307624}
+  m_LocalPosition: {x: -6.36381, y: 6.329, z: 17.644232}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -89.980194, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.99999, y: -180, z: -38.490997}
 --- !u!23 &23094433086743212
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -81,4 +82,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655188977868730}
+  m_Mesh: {fileID: 4300002, guid: 92bad9ac7bb39fa4d9ce8fc2d181f64f, type: 3}
+--- !u!64 &64647835076096470
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655188977868730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 92bad9ac7bb39fa4d9ce8fc2d181f64f, type: 3}

@@ -17,7 +17,7 @@ public class InitPlayerSystem : IInitializeSystem {
 
 		entity.AddIndexableEntity(uuid);
 		entity.isPlayer = true;
-		//TODO: entity.AddPlayerClickInput(null);
+		//entity.AddPlayerActionInput(null, null);
 		entity.AddView(playerView.gameObject);
 
 		// Link view with model.

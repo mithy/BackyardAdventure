@@ -9,6 +9,12 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	private UIContainerView _uiContainer;
 
+	[SerializeField]
+	private MissionsDB _missions;
+
+	[SerializeField]
+	private TextHelper _textHelper;
+
 	private Systems _systems;
     private Contexts _contexts;
 
@@ -16,6 +22,8 @@ public class GameController : MonoBehaviour {
 		Random.InitState(321);
 
 		_uiContainer.InitializeGlobals(_globals);
+		_missions.InitializeGlobals(_globals);
+		_textHelper.InitializeGlobals(_globals);
 
 		_contexts = Contexts.sharedInstance;
 		_contexts.game.SetGlobals(_globals);

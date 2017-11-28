@@ -53,3 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globals: {fileID: 11400000, guid: efc7ce958e9055e49ab8888ac3dd7747, type: 2}
   _uiContainer: {fileID: 0}
+  _missions: {fileID: 11400000, guid: 7677531f4479a164e9931b117a0f99d6, type: 2}
+  _textHelper: {fileID: 11400000, guid: 8477419122f3e844ea6e9b5e8bc4ec95, type: 2}

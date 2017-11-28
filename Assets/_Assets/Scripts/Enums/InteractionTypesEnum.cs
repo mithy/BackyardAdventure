@@ -2,5 +2,6 @@
 	Pickable,
 	Movable,
 	Collectable,
-	Activable
+	Activable,
+	Trigger
 }

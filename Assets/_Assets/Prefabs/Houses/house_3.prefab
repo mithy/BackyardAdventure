@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4440749420180970}
   - component: {fileID: 33096968096496188}
   - component: {fileID: 23322976191266524}
+  - component: {fileID: 65912660867941550}
   m_Layer: 0
   m_Name: Box1441
   m_TagString: Untagged
@@ -123,6 +124,7 @@ GameObject:
   - component: {fileID: 4395307323209022}
   - component: {fileID: 33581843714764870}
   - component: {fileID: 23682556298987582}
+  - component: {fileID: 64219597776863308}
   m_Layer: 0
   m_Name: Box1440
   m_TagString: Untagged
@@ -289,8 +291,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1997222635924208}
-  m_LocalRotation: {x: -2.1648903e-17, y: -0.7071068, z: -2.1648903e-17, w: 0.7071068}
-  m_LocalPosition: {x: 24.733437, y: 4.2789364, z: 18.900993}
+  m_LocalRotation: {x: -0.00000008429357, y: -0.7058719, z: -0.000000084293575, w: -0.7083395}
+  m_LocalPosition: {x: 22.5, y: 12.2, z: 3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4395307323209022}
@@ -304,7 +306,7 @@ Transform:
   - {fileID: 4014417906389032}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -270.2, z: 0}
 --- !u!4 &4886937557349332
 Transform:
   m_ObjectHideFlags: 1
@@ -687,3 +689,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1913404400624124}
   m_Mesh: {fileID: 4300008, guid: f83d560db2e914c419f6a19524eecd96, type: 3}
+--- !u!64 &64219597776863308
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873782000658804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300004, guid: f83d560db2e914c419f6a19524eecd96, type: 3}
+--- !u!65 &65912660867941550
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333393072806354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3252716, y: 0.5367317, z: 6.4767375}
+  m_Center: {x: 0.00000023841858, y: -1.0730295e-14, z: 1.5101556}

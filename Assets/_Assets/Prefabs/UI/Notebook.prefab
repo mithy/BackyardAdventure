@@ -111,7 +111,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "[1] Objectives \n[2] Achivemenets\n[3] Inventory\n[4] Help"
+  m_Text: "[1] Notes\n[2] Objectives \n[3] Achivemenets\n[4] Inventory\n[5] Help"
 --- !u!114 &114669217543879954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,12 +171,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Welcome to the backyard
-
-
-    a) clean the dishes
-
-    b) sort'
+  m_Text: 
 --- !u!114 &114793447140232256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textHelper: {fileID: 11400000, guid: 8477419122f3e844ea6e9b5e8bc4ec95, type: 2}
   _text: {fileID: 114704395792762074}
+  _helperText: {fileID: 114432313636213664}
   _background: {fileID: 1661792752601978}
 --- !u!222 &222345899226059482
 CanvasRenderer:
@@ -240,7 +236,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1506271387112662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -169.2, y: 46.34999, z: 0}
+  m_LocalPosition: {x: -169.2, y: 55.069992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224675283059312192}
@@ -248,8 +244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.7, y: -195.3}
-  m_SizeDelta: {x: 338.4, y: 70.63}
+  m_AnchoredPosition: {x: 24.7, y: -186.58}
+  m_SizeDelta: {x: 338.4, y: 88.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224675283059312192
 RectTransform:

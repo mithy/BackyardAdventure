@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4629482911793958}
   - component: {fileID: 33789929839222946}
   - component: {fileID: 23747351153655570}
+  - component: {fileID: 65647965029710002}
   m_Layer: 0
   m_Name: Cloud_3
   m_TagString: Untagged
@@ -35,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636594140802958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6601868, y: 32.5, z: 16.483702}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: -36.8, y: 38.9, z: -21.7}
+  m_LocalScale: {x: 5, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636594140802958}
   m_Mesh: {fileID: 4300000, guid: 051ce6c669ebc7647b562ee9c32d2ef0, type: 3}
+--- !u!65 &65647965029710002
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636594140802958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.9, y: 1.9794791, z: 2.19}
+  m_Center: {x: 0.45926368, y: -0.008765489, z: -0.20710588}

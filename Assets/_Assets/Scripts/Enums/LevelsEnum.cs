@@ -1,4 +1,8 @@
 ﻿public enum LevelsEnum {
-	Level1,
-	Level2
+    DayZero,
+	DayOne,
+	DayTwo,
+	DayThree,
+    DayFour,
+    DayFive
 }

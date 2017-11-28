@@ -10,6 +10,6 @@ public class InitGameSystem : IInitializeSystem {
 
 	public void Initialize() {
 		GameEntity initGame = _gameContext.CreateEntity();
-		initGame.AddLoadLevelTrigger(LevelsEnum.Level1);
+		initGame.AddLoadLevelTrigger(LevelsEnum.DayOne);
 	}
 }
