@@ -10,5 +10,7 @@
     Gear1,
     Gear2,
     Gear3,
-    WindmillZone
+    WindmillZone,
+    Star,
+    Mushroom
 }

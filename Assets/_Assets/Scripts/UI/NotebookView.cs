@@ -5,19 +5,21 @@ public class NotebookView : MonoBehaviour {
 
 	private const float ANIMATION_SPEED = 1500.0f;
 
-	[SerializeField]
+    private bool _isShown;
+    public bool IsShown {
+        get {
+            return _isShown;
+        }
+    }
+
+    [SerializeField]
 	private TextHelper _textHelper;
 
 	[SerializeField]
 	private Text _text;
 
 	[SerializeField]
-	private Text _helperText;
-
-	[SerializeField]
 	private GameObject _background;
-
-	private bool _isShown;
 
 	private float _startTime;
 	private float _travelLength;
@@ -36,12 +38,6 @@ public class NotebookView : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (Input.GetKeyDown(KeyCode.Tab)) {			_isShown = !_isShown;
-			_startTime = Time.time;
-			_travelLength = Vector3.Distance(transform.position, _isShown ? _finalPositionShown : _finalPositionHidden);
-			_initialPosition = transform.position;
-		}
-
 		float distCovered = (Time.time - _startTime) * ANIMATION_SPEED;
 		float fracJourney = distCovered / _travelLength;
 		transform.position = Vector3.Lerp(_initialPosition, _isShown ? _finalPositionShown : _finalPositionHidden, fracJourney);
@@ -51,7 +47,10 @@ public class NotebookView : MonoBehaviour {
 		_text.text = text;
 	}
 
-	public void SetHelperText(string text) {
-		_helperText.text = text;
-	}
+    public void Toggle(bool isOn) {
+        _isShown = isOn;
+        _startTime = Time.time;
+        _travelLength = Vector3.Distance(transform.position, _isShown ? _finalPositionShown : _finalPositionHidden);
+        _initialPosition = transform.position;
+    }
 }

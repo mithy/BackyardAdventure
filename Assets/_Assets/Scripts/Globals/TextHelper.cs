@@ -9,23 +9,33 @@ public class TextHelper : ScriptableObject {
 	{
 		{ "Loading", "Loading" },
 
-		{ "Star Collected", "Star Collected" },
-
 		{ "DayOne", "DAY ONE" },
 		{ "DayTwo", "DAY TWO" }
 	};
 
-	public string NotesUpdated {
-		get {
-			return GetTranslation("Notes Updated");
-		}
-	}
-
-	public string Help {
+	public string HelpText {
 		get {
 			return "Welcome to the Backyard help!\n\nWSAD - to move\n\nLeft Click - Pick Up, interact\n\nRight Click - Drop, Throw, Stop\n\nSPACE - jump\n\nSHIFT - run\n\nTAB - show notepad";
 		}
 	}
+
+    public string Objectives {
+        get {
+            return GetTranslation("Objectives");
+        }
+    }
+
+    public string Achievements {
+        get {
+            return GetTranslation("Achievements");
+        }
+    }
+
+    public string Help {
+        get {
+            return GetTranslation("Help");
+        }
+    }
 
 	public void InitializeGlobals(Globals globals) {
 		globals.textHelper = this;

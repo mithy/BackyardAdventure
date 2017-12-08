@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4813063433008806}
   - component: {fileID: 33321613859809000}
   - component: {fileID: 23555695575139592}
+  - component: {fileID: 135932363204487620}
   m_Layer: 0
   m_Name: Rock_01
   m_TagString: Untagged
@@ -34,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503255730936966}
-  m_LocalRotation: {x: 0.000000015333885, y: -0.7125742, z: -0.000000015573814, w: 0.7015968}
-  m_LocalPosition: {x: -14.07513, y: 4.355, z: -13.382082}
+  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.35, y: 4.2789364, z: 24.27}
   m_LocalScale: {x: 0.5000001, y: 0.5, z: 0.5000001}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503255730936966}
   m_Mesh: {fileID: 4300000, guid: 7f8c0defd59973b41b43e61468ae5158, type: 3}
+--- !u!135 &135932363204487620
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503255730936966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.66242886
+  m_Center: {x: 0, y: 0, z: 0}

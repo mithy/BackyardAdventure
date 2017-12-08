@@ -9,12 +9,16 @@ public class Globals : ScriptableObject {
 	public TextHelper textHelper;
 	public MissionsDB missions;
 
+    public FirstPersonController fpsController;
+
 	public NotebookView notebookView;
-	public NotebookMessagesView notebookMessagesView;
+	public NotebookAlertsView notebookAlertsView;
 	public SceneIntroView sceneIntroView;
 	public ThrowPowerView throwPowerView;
 	public ActionHelperView actionHelperView;
+    public StarView starView;
 	public EndGameView endGameView;
+	public ExitExitView exitExitView;
 
 	public string GetSceneForLevel(LevelsEnum level) {
 		switch (level) {

@@ -6,7 +6,8 @@ public class ContainedObjectHandlerSystem : ReactiveSystem<GameEntity> {
 	private GameContext _gameContext;
 
 	public ContainedObjectHandlerSystem(Contexts contexts) : base(contexts.game) {
-		_gameContext = contexts.game;	}
+		_gameContext = contexts.game;
+	}
 	
 	protected override void Execute(List<GameEntity> entities) {
 		foreach (var entity in entities) {
@@ -29,5 +30,6 @@ public class ContainedObjectHandlerSystem : ReactiveSystem<GameEntity> {
 
 	private void TriggerEvent(EventsEnum evt, int index) {
 		GameEntity entity = _gameContext.CreateEntity();
-		entity.AddEventTrigger(evt, index);	}
+		entity.AddEventTrigger(evt, index);
+	}
 }

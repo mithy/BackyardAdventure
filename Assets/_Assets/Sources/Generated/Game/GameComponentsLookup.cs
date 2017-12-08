@@ -19,16 +19,19 @@ public static class GameComponentsLookup {
     public const int LoadNextLevelTrigger = 8;
     public const int MissionsDB = 9;
     public const int Moving = 10;
-    public const int NotebookLog = 11;
-    public const int Pickable = 12;
-    public const int PickedUp = 13;
-    public const int PlayerActionInput = 14;
-    public const int PlayerCollectInput = 15;
-    public const int Player = 16;
-    public const int TextHelper = 17;
-    public const int View = 18;
+    public const int NotebookAlert = 11;
+    public const int NotebookClear = 12;
+    public const int NotebookText = 13;
+    public const int Pickable = 14;
+    public const int PickedUp = 15;
+    public const int PlayerActionInput = 16;
+    public const int PlayerAdvanceNextDayInput = 17;
+    public const int PlayerCollectInput = 18;
+    public const int Player = 19;
+    public const int TextHelper = 20;
+    public const int View = 21;
 
-    public const int TotalComponents = 19;
+    public const int TotalComponents = 22;
 
     public static readonly string[] componentNames = {
         "BasketHoopTrigger",
@@ -42,10 +45,13 @@ public static class GameComponentsLookup {
         "LoadNextLevelTrigger",
         "MissionsDB",
         "Moving",
-        "NotebookLog",
+        "NotebookAlert",
+        "NotebookClear",
+        "NotebookText",
         "Pickable",
         "PickedUp",
         "PlayerActionInput",
+        "PlayerAdvanceNextDayInput",
         "PlayerCollectInput",
         "Player",
         "TextHelper",
@@ -64,10 +70,13 @@ public static class GameComponentsLookup {
         typeof(LoadNextLevelTriggerComponent),
         typeof(MissionsDBComponent),
         typeof(MovingComponent),
-        typeof(NotebookLogComponent),
+        typeof(NotebookAlertComponent),
+        typeof(NotebookClearComponent),
+        typeof(NotebookTextComponent),
         typeof(PickableComponent),
         typeof(PickedUpComponent),
         typeof(PlayerActionInputComponent),
+        typeof(PlayerAdvanceNextDayInputComponent),
         typeof(PlayerCollectInputComponent),
         typeof(PlayerComponent),
         typeof(TextHelperComponent),

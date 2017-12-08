@@ -152,10 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4783950335391786, guid: 08d4b63eb4a8d4d4eb9096407519c7f9, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 127.09901
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08d4b63eb4a8d4d4eb9096407519c7f9, type: 2}
   m_IsPrefabParent: 0
@@ -224,23 +220,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 9.672001, y: -19.028002, z: 20.543001}
---- !u!1 &1702522753 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1911691359695212, guid: 08d4b63eb4a8d4d4eb9096407519c7f9,
-    type: 2}
-  m_PrefabInternal: {fileID: 714655227}
---- !u!114 &1702522755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1702522753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []

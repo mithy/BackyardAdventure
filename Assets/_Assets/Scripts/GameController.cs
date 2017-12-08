@@ -1,4 +1,5 @@
 using Entitas;
+using System;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
@@ -15,15 +16,19 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	private TextHelper _textHelper;
 
+    [SerializeField]
+    private FirstPersonController _fpsController;
+
 	private Systems _systems;
     private Contexts _contexts;
 
     private void Start() {
-		Random.InitState(321);
+        UnityEngine.Random.InitState(321);
 
 		_uiContainer.InitializeGlobals(_globals);
 		_missions.InitializeGlobals(_globals);
 		_textHelper.InitializeGlobals(_globals);
+        _globals.fpsController = _fpsController;
 
 		_contexts = Contexts.sharedInstance;
 		_contexts.game.SetGlobals(_globals);

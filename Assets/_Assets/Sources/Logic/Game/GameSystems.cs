@@ -7,7 +7,7 @@
 		Add(new DroppedObjectHandlerSystem(contexts));
 		Add(new ContainedObjectHandlerSystem(contexts));
 		Add(new StarCollectHandlerSystem(contexts));
-		Add(new NotebookLoggerSystem(contexts));
+		Add(new NotebookSystem(contexts));
 		Add(new BasketHoopValidatorSystem(contexts));
 	}
 }

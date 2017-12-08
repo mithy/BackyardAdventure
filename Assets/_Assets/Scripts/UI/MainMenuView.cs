@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MainMenuView : MonoBehaviour {
 
-    private const string VERSION = "v0.2 by Adrian Popovici, 2017";
+    private const string VERSION = "DVE | 2017 | v1.0";
 
     [SerializeField]
     private Text _version;

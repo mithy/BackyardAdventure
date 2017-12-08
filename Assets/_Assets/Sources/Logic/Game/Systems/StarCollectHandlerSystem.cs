@@ -17,13 +17,15 @@ public class StarCollectHandlerSystem : ReactiveSystem<GameEntity> {
 		foreach (var entity in entities) {
 			if (!_collectedStars.Contains(entity.playerCollectInput.UUID)) {
 				_collectedStars.Add(entity.playerCollectInput.UUID);
-				_gameContext.globals.value.notebookMessagesView.DisplayMessage("Star Collected");
+                _gameContext.globals.value.starView.UpdateAmount(_collectedStars.Count);
 			}
 
 			entity.RemovePlayerCollectInput();
 		}
 
-        UpdateAchievements();
+        if (_collectedStars.Count >= 21) {
+            _gameContext.globals.value.fpsController.CanDoubleJump = true;
+        }
     }
 
 	protected override bool Filter(GameEntity entity) {
@@ -33,17 +35,4 @@ public class StarCollectHandlerSystem : ReactiveSystem<GameEntity> {
 	protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
 		return context.CreateCollector(GameMatcher.PlayerCollectInput);
 	}
-
-    private void UpdateAchievements() {
-        string str = string.Empty;
-
-        if (_collectedStars.Count < 21) {
-            str = "Stars needed " + _collectedStars.Count + "/21";
-        } else {
-            str = "Stars Collected!!!";
-        }
-
-        GameEntity log = _gameContext.CreateEntity();
-        log.AddNotebookLog(NotebookPagesEnum.Achivements, str, false);
-    }
 }

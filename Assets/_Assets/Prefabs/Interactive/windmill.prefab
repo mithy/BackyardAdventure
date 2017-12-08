@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4347156314278932}
   - component: {fileID: 33523735974387538}
   - component: {fileID: 23903540325543774}
+  - component: {fileID: 64950207477894292}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4998944629169168}
   - component: {fileID: 33145707556247552}
   - component: {fileID: 23596887612968900}
+  - component: {fileID: 65870118769977074}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -612,6 +614,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713941769450966}
   m_Mesh: {fileID: 4300012, guid: a0c1e95315557414faf9523ac812a403, type: 3}
+--- !u!64 &64950207477894292
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071043053137676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: a0c1e95315557414faf9523ac812a403, type: 3}
 --- !u!65 &65702399906671528
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -624,6 +640,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.92, y: 3.14, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65870118769977074
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1161435754863742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5319738, y: 3, z: 0.12526426}
+  m_Center: {x: -0.7659873, y: 7.014404e-16, z: 0.037632577}
 --- !u!95 &95595760169627320
 Animator:
   serializedVersion: 3

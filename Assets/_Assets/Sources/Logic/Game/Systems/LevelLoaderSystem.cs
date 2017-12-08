@@ -11,7 +11,6 @@ public class LevelLoaderSystem : ReactiveSystem<GameEntity> {
 	private readonly IGroup<GameEntity> _interactibleEntities;
 
 	private TextHelper _textHelper;
-    private bool _shouldLoadScene;
 	private LevelsEnum _sceneToLoad;
     private string _sceneToUnload;
     private int _maxLevels;
@@ -26,37 +25,32 @@ public class LevelLoaderSystem : ReactiveSystem<GameEntity> {
 		_interactibleEntities = _gameContext.GetGroup(GameMatcher.Interactible);
 
 		SceneManager.sceneLoaded += OnSceneFinishedLoading;
-		SceneManager.sceneUnloaded += OnSceneFinishedUnloading;
 	}
 
 	protected override void Execute(List<GameEntity> entities) {
 		foreach (var entity in entities) {
-            _shouldLoadScene = false;
-
             if (entity.isLoadNextLevelTrigger) {
+                ClearInteractibleObjects();
+
                 if ((int) _sceneToLoad + 1 < _maxLevels) {
                     _sceneToLoad = _sceneToLoad + 1;
                     _sceneToUnload = _gameContext.globals.value.GetSceneForLevel(_sceneToLoad - 1);
-                    _shouldLoadScene = true;
-                }
-            } else {
-                if (_sceneToLoad != entity.loadLevelTrigger.Level) {
-                    _sceneToLoad = entity.loadLevelTrigger.Level;
-                    _sceneToUnload = string.Empty;
-                    _shouldLoadScene = true;
                 }
             }
 
-			_gameContext.globals.value.sceneIntroView.FadeIn();
+            if (entity.hasLoadLevelTrigger) {
+                if (_sceneToLoad != entity.loadLevelTrigger.Level) {
+                    _sceneToLoad = entity.loadLevelTrigger.Level;
+                    _sceneToUnload = string.Empty;
+                }
+            }
 
 			if (_sceneToUnload != string.Empty) {
-				ClearInteractibleObjects();
 				SceneManager.UnloadSceneAsync(_sceneToUnload);
-			} else {
-                if (_shouldLoadScene) {
-                    LoadNewScene();
-                }
 			}
+
+            _gameContext.globals.value.sceneIntroView.FadeIn();
+            LoadNewScene();
 
             entity.Destroy();
 		}
@@ -83,12 +77,6 @@ public class LevelLoaderSystem : ReactiveSystem<GameEntity> {
         SceneManager.SetActiveScene(scene);
 
 		_gameContext.globals.value.sceneIntroView.Activate(_sceneToLoad, _gameContext.globals.value.missions.GetEventsForDay(_sceneToLoad)[EventsEnum.DayStarted].Text);
-	}
-
-	private void OnSceneFinishedUnloading(Scene scene) {
-        if (_shouldLoadScene) {
-            LoadNewScene();
-        }
 	}
 
 	private void InitializeInteractibleObjects() {
@@ -126,10 +114,7 @@ public class LevelLoaderSystem : ReactiveSystem<GameEntity> {
 		entity.AddEventTrigger(EventsEnum.DayStarted, (int) _sceneToLoad);
 
 		GameEntity log = _gameContext.CreateEntity();
-		log.AddNotebookLog(NotebookPagesEnum.Clear, string.Empty, false);
-
-		GameEntity log2 = _gameContext.CreateEntity();
-		log2.AddNotebookLog(NotebookPagesEnum.Notes, GetDayText(), false);
+        log.isNotebookClear = true;
 	}
 
 	private string GetDayText() {

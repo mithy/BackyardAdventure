@@ -3,14 +3,7 @@
 	DayStarted,
 
 	// Day One.
-	FruitHovered,
-	FruitPicked,
-	CrateHovered,
-	CratePicked,
 	FruitInCrate,
-	FruitOutOfCrate,
-	CrateFull,
-	CrateDelivered,
 
 	// Day Two.
 	BasketballHoop,

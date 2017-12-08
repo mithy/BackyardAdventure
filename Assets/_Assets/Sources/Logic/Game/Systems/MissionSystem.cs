@@ -5,55 +5,66 @@ using UnityEngine;
 
 public class MissionSystem : ReactiveSystem<GameEntity>, ICleanupSystem {
 
-	private readonly GameContext _gameContext;
-	private readonly InputContext _inputContext;
+    private readonly GameContext _gameContext;
+    private readonly InputContext _inputContext;
 
-	private readonly IGroup<GameEntity> _eventTriggers;
+    private readonly IGroup<GameEntity> _eventTriggers;
 
-	private Dictionary<EventsEnum, MissionsDB.Mission> _missions;
-	private List<EventsEnum> _discoveredEvents = new List<EventsEnum>();
+    private Dictionary<EventsEnum, MissionsDB.Mission> _missions;
 
-	private TextHelper _textHelper;
+    private TextHelper _textHelper;
 
-	public MissionSystem(Contexts contexts) : base(contexts.game) {
-		_gameContext = contexts.game;
-		_inputContext = contexts.input;
+    private bool _isDayFinished;
 
-		_textHelper = _gameContext.globals.value.textHelper;
+    public MissionSystem(Contexts contexts) : base(contexts.game) {
+        _gameContext = contexts.game;
+        _inputContext = contexts.input;
 
-		_eventTriggers = _gameContext.GetGroup(GameMatcher.EventTrigger);
-	}
+        _textHelper = _gameContext.globals.value.textHelper;
 
-	protected override void Execute(List<GameEntity> entities) {
-		foreach (var entity in entities) {
-			if (entity.eventTrigger.Evt == EventsEnum.DayStarted) {
-				ProcessNewDay(entity.eventTrigger.Index);
-			} else {
-				ProcessEvent(entity.eventTrigger.Evt, entity.eventTrigger.Index);	
-			}
+        _eventTriggers = _gameContext.GetGroup(GameMatcher.EventTrigger);
+    }
+
+    protected override void Execute(List<GameEntity> entities) {
+        foreach (var entity in entities) {
+            if (entity.hasEventTrigger) {
+                if (entity.eventTrigger.Evt == EventsEnum.DayStarted) {
+                    ProcessNewDay(entity.eventTrigger.Index);
+                }
+                else {
+                    ProcessEvent(entity.eventTrigger.Evt, entity.eventTrigger.Index);
+                }
+            }
+
+            if (entity.isPlayerAdvanceNextDayInput && _isDayFinished) {
+                GameEntity advanceNextDay = _gameContext.CreateEntity();
+                advanceNextDay.isLoadNextLevelTrigger = true;
+
+                _gameContext.globals.value.endGameView.Toggle(false);
+            }
 
             if (!entity.isInteractible) {
                 entity.Destroy();
             } else {
                 entity.RemoveEventTrigger();
             }
-		}
-	}
+        }
+    }
 
-	public void Cleanup() {
-	}
+    public void Cleanup() {
+    }
 
-	protected override bool Filter(GameEntity entity) {
-		return entity.hasEventTrigger;
+    protected override bool Filter(GameEntity entity) {
+        return entity.hasEventTrigger || entity.isPlayerAdvanceNextDayInput;
 	}
 
 	protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
-		return context.CreateCollector(GameMatcher.EventTrigger);
+		return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.EventTrigger, GameMatcher.PlayerAdvanceNextDayInput));
 	}
 
 	private void ProcessNewDay(int index) {
-		_missions = _gameContext.globals.value.missions.GetEventsForDay((LevelsEnum) index);
-		_discoveredEvents.Clear();
+        _isDayFinished = false;
+        _missions = _gameContext.globals.value.missions.GetEventsForDay((LevelsEnum) index);
 
         UpdateObjectives();
     }
@@ -68,12 +79,10 @@ public class MissionSystem : ReactiveSystem<GameEntity>, ICleanupSystem {
 				mission.Index += index;
                 mission.Index = Mathf.Clamp(mission.Index, 0, int.MaxValue);
 
-				_missions[evt] = mission;
-			}
+                GameEntity alert = _gameContext.CreateEntity();
+                alert.AddNotebookAlert(true);
 
-			if (mission.IsDiscoverable && !_discoveredEvents.Contains(evt)) {
-				ProcessDiscoveredEvent(evt, mission.Text);
-				_discoveredEvents.Add(evt);
+                _missions[evt] = mission;
 			}
 		}
 
@@ -81,36 +90,27 @@ public class MissionSystem : ReactiveSystem<GameEntity>, ICleanupSystem {
 		CheckEndMission();
 	}
 
-	private void ProcessDiscoveredEvent(EventsEnum evt, string text) {
-		switch (evt) {
-			case EventsEnum.FruitPicked:
-				text = _textHelper.GetTranslation(text);
-				break;
-		}
-
-		if (!string.IsNullOrEmpty(text)) {
-			GameEntity log = _gameContext.CreateEntity();
-			log.AddNotebookLog(NotebookPagesEnum.Notes, text, true);
-
-			_gameContext.globals.value.notebookMessagesView.DisplayMessage(_textHelper.NotesUpdated);
-		}
-	}
-
 	private void UpdateObjectives() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder objectivesString = new StringBuilder();
 
 		foreach (KeyValuePair<EventsEnum, MissionsDB.Mission> pair in _missions) {
 			if (pair.Value.IsObjective) {
-				sb.Append(pair.Value.Text);
-				sb.Append(" (needed: ");
-				sb.Append(pair.Value.Index);
-				sb.Append(")");
-                sb.Append("\n\n");
+                if (pair.Value.Index <= 0) {
+                    objectivesString.Append("✓ ");
+                }
+                else {
+                    objectivesString.Append("[");
+                    objectivesString.Append(pair.Value.Index);
+                    objectivesString.Append("] ");
+                }
+
+                objectivesString.Append(pair.Value.Text);
+                objectivesString.Append("\n\n");
 			}
         }
 
 		GameEntity log = _gameContext.CreateEntity();
-		log.AddNotebookLog(NotebookPagesEnum.Objectives, sb.ToString(), false);
+		log.AddNotebookText(objectivesString.ToString());
 	}
 
 	private void CheckEndMission() {
@@ -124,7 +124,8 @@ public class MissionSystem : ReactiveSystem<GameEntity>, ICleanupSystem {
         }
 
 		if (isMissionEnded) {
-			_gameContext.globals.value.endGameView.Toggle(true);
+            _isDayFinished = true;
+            _gameContext.globals.value.endGameView.Toggle(true);
 		}
 	}
 }

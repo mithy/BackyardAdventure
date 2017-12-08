@@ -36,24 +36,29 @@ public class CarHandlerView : MonoBehaviour {
     private Movement _c2;
 
     void Start () {
-        _c1 = new Movement() {
-            journeyLength = Vector3.Distance(_car1Spawn.position, _car1Destroy.position),
-            car = _car1,
-            startpos = _car1Spawn.position,
-            endpos = _car1Destroy.position,
-            isFinished = true
-        };
+        if (_car1 != null) {
+            _c1 = new Movement() {
+                journeyLength = Vector3.Distance(_car1Spawn.position, _car1Destroy.position),
+                car = _car1,
+                startpos = _car1Spawn.position,
+                endpos = _car1Destroy.position,
+                isFinished = true
+            };
 
-        _c2 = new Movement() {
-            journeyLength = Vector3.Distance(_car2Spawn.position, _car2Destroy.position),
-            car = _car2,
-            startpos = _car2Spawn.position,
-            endpos = _car2Destroy.position,
-            isFinished = true
-        };
+            _mvm.Add(_c1);
+        }
 
-        _mvm.Add(_c1);
-        _mvm.Add(_c2);
+        if (_car2 != null) {
+            _c2 = new Movement() {
+                journeyLength = Vector3.Distance(_car2Spawn.position, _car2Destroy.position),
+                car = _car2,
+                startpos = _car2Spawn.position,
+                endpos = _car2Destroy.position,
+                isFinished = true
+            };
+
+            _mvm.Add(_c2);
+        }
     }
 	
 	private void Update () {
@@ -63,6 +68,7 @@ public class CarHandlerView : MonoBehaviour {
             float distCovered = (Time.time - m.startTime) * m.speed;
             float fracJourney = distCovered / m.journeyLength;
             m.car.position = Vector3.Lerp(m.startpos, m.endpos, fracJourney);
+            m.car.LookAt(m.endpos);
 
             if (Mathf.Approximately(fracJourney, 1) || fracJourney > 1) {
                 m.isFinished = true;
@@ -75,7 +81,8 @@ public class CarHandlerView : MonoBehaviour {
     }
 
     private void GenerateCarMovement() {
-        Movement m = Random.Range(0, 2) == 0 ? _c1 : _c2;
+        Movement m = _mvm[Random.Range(0, _mvm.Count)];
+
         if (m.isFinished == true) {
             m.startTime = Time.time;
             m.speed = Random.Range(10, 50);

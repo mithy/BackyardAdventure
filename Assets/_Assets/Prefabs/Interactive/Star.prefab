@@ -53,9 +53,9 @@ GameObject:
   - component: {fileID: 4365542653306046}
   - component: {fileID: 33865288884133286}
   - component: {fileID: 23901331560982184}
+  - component: {fileID: 135318095964952520}
   - component: {fileID: 95829009645759520}
   - component: {fileID: 114920401519855224}
-  - component: {fileID: 135318095964952520}
   - component: {fileID: 114840257818700634}
   - component: {fileID: 114841252818846976}
   m_Layer: 30
@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1659887463189038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.69, y: 5.986, z: 17.6}
+  m_LocalPosition: {x: -6.34, y: 11.492, z: 17.6}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 4760731745623014}
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionType: 2
-  Type: 0
+  Type: 12
   IsCollectable: 0
 --- !u!114 &114920401519855224
 MonoBehaviour:
@@ -272,7 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0732a771354423941b249a45320a335c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uuid: '8d24bb41-bbfb-487f-9e90-ee75f312e632  '
+  _axis: {x: 0, y: 1, z: 0}
+  _speed: 100
 --- !u!135 &135318095964952520
 SphereCollider:
   m_ObjectHideFlags: 1
